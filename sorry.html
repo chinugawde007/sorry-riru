@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I'm Sorry Rirudi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+background:linear-gradient(135deg,#1a0033,#3a0066,#52008d);
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+color:white;
+}
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+color:#ff8ac6;
+font-size:20px;
+animation:float 10s infinite linear;
+opacity:0.6;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh)}
+}
+
+/* card */
+
+.container{
+width:420px;
+height:640px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-radius:25px;
+box-shadow:0 25px 50px rgba(0,0,0,0.5);
+padding:25px;
+text-align:center;
+display:flex;
+flex-direction:column;
+}
+
+h1{
+font-weight:700;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:13px;
+opacity:0.7;
+margin-bottom:15px;
+}
+
+/* carousel */
+
+.carousel{
+flex:1;
+position:relative;
+overflow:hidden;
+}
+
+.slide{
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100%;
+animation:fade 0.8s;
+}
+
+.slide img{
+width:240px;
+height:240px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.slide p{
+font-size:16px;
+line-height:1.6;
+max-width:320px;
+}
+
+/* final slide */
+
+.final-slide{
+overflow-y:auto;
+padding-right:6px;
+}
+
+.final-slide img{
+width:200px;
+height:200px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.final-slide h2{
+margin-bottom:10px;
+color:#ffb3d9;
+}
+
+.final-slide p{
+font-size:15px;
+line-height:1.7;
+max-width:320px;
+white-space:pre-line;
+}
+
+/* buttons */
+
+.buttons{
+margin-top:10px;
+}
+
+button{
+background:#ff5fa2;
+border:none;
+color:white;
+padding:10px 18px;
+margin:5px;
+border-radius:20px;
+cursor:pointer;
+font-weight:500;
+transition:0.25s;
+}
+
+button:hover{
+background:#ff2f87;
+transform:scale(1.05);
+}
+
+.forgive{
+margin-top:15px;
+background:#ffd166;
+color:#3a0066;
+font-weight:600;
+}
+
+.forgiven{
+display:none;
+margin-top:10px;
+color:#ffd166;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(10px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<25;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(6+Math.random()*8)+"s";
+heart.style.fontSize=(16+Math.random()*10)+"px";
+document.body.appendChild(heart);
+}
+</script>
+
+<div class="container">
+
+<h1>I'm Really Sorry Riru ❤️</h1>
+<div class="subtitle">From someone who loves you a lot</div>
+
+<div class="carousel">
+
+<div class="slide" style="display:flex">
+<img src="photo1.jpg">
+<p>I know I made a mistake… and I wish I could rewind that moment.</p>
+</div>
+
+<div class="slide">
+<img src="photo2.jpg">
+<p>You mean more to me than my ego, my pride, or any argument.</p>
+</div>
+
+<div class="slide">
+<img src="photo3.jpg">
+<p>Every moment with you is something I cherish deeply.</p>
+</div>
+
+<div class="slide">
+<img src="photo4.jpg">
+<p>I hate knowing that I hurt the person who makes me happiest.</p>
+</div>
+
+<div class="slide final-slide">
+
+<img src="final-photo.jpg">
+
+<h2>My Heartfelt Apology</h2>
+
+<p id="letter"></p>
+
+<button class="forgive" onclick="forgive()">Do you forgive me? 💖</button>
+
+<div class="forgiven" id="forgivenMsg">
+You just made my heart the happiest again ❤️
+</div>
+
+</div>
+
+</div>
+
+<div class="buttons">
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+</div>
+
+</div>
+
+<script>
+
+let index=0
+let slides=document.querySelectorAll(".slide")
+
+function showSlide(i){
+slides.forEach(s=>s.style.display="none")
+slides[i].style.display="flex"
+
+if(i===slides.length-1){
+startTyping()
+}
+}
+
+function next(){
+index++
+if(index>=slides.length) index=slides.length-1
+showSlide(index)
+}
+
+function prev(){
+index--
+if(index<0) index=0
+showSlide(index)
+}
+
+const text=`I know saying sorry cannot instantly fix everything.
+
+But please know that this apology comes from the deepest place in my heart.
+
+You are someone incredibly special to me.
+Your smile, your laughter, and even your little expressions make my world brighter.
+
+Hurting you or making you feel that you being ignored,
+or sidelined was never my intention and never will be.
+
+I want to share and live every moment with you.
+
+I promise to listen better,
+understand you more,
+and love you the way you deserve.
+
+If you give me another chance,
+I'll spend every day proving how much you mean to me.
+
+You are my favorite person in this world. ❤️`
+
+let started=false
+
+function startTyping(){
+if(started) return
+started=true
+
+let i=0
+let letter=document.getElementById("letter")
+
+function type(){
+if(i<text.length){
+letter.innerHTML+=text.charAt(i)
+i++
+setTimeout(type,35)
+}
+}
+
+type()
+}
+
+function forgive(){
+document.getElementById("forgivenMsg").style.display="block"
+}
+
+</script>
+
+</body>
+</html>
