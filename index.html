@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I'm Sorry Rirudi ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@ align-items:center;
 justify-content:center;
 overflow:hidden;
 color:white;
+padding:10px;
 }
 
 /* floating hearts */
@@ -40,11 +42,13 @@ opacity:0.6;
 100%{transform:translateY(-10vh)}
 }
 
-/* card */
+/* container */
 
 .container{
 width:420px;
+max-width:95vw;
 height:640px;
+max-height:92vh;
 background:rgba(255,255,255,0.08);
 backdrop-filter:blur(20px);
 border-radius:25px;
@@ -62,7 +66,7 @@ margin-bottom:5px;
 
 .subtitle{
 font-size:13px;
-opacity:0.7;
+opacity:0.8;
 margin-bottom:15px;
 }
 
@@ -80,7 +84,7 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 height:100%;
-animation:fade 0.8s;
+animation:fade 0.6s;
 }
 
 .slide img{
@@ -102,7 +106,7 @@ max-width:320px;
 
 .final-slide{
 overflow-y:auto;
-padding-right:6px;
+padding-right:5px;
 }
 
 .final-slide img{
@@ -156,15 +160,60 @@ color:#3a0066;
 font-weight:600;
 }
 
+/* forgive animation */
+
 .forgiven{
 display:none;
 margin-top:10px;
 color:#ffd166;
+font-size:18px;
+animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+0%{transform:scale(0.5);opacity:0}
+100%{transform:scale(1);opacity:1}
 }
 
 @keyframes fade{
 from{opacity:0; transform:translateY(10px)}
 to{opacity:1; transform:translateY(0)}
+}
+
+/* mobile responsiveness */
+
+@media (max-width:600px){
+
+.container{
+width:92vw;
+height:92vh;
+padding:20px;
+}
+
+.slide img{
+width:70vw;
+height:70vw;
+max-width:280px;
+max-height:280px;
+}
+
+.final-slide img{
+width:65vw;
+height:65vw;
+max-width:240px;
+max-height:240px;
+}
+
+.slide p,
+.final-slide p{
+font-size:15px;
+}
+
+button{
+padding:12px 18px;
+font-size:15px;
+}
+
 }
 
 </style>
@@ -173,15 +222,19 @@ to{opacity:1; transform:translateY(0)}
 <body>
 
 <script>
+
+/* floating hearts */
+
 for(let i=0;i<25;i++){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(6+Math.random()*8)+"s";
-heart.style.fontSize=(16+Math.random()*10)+"px";
-document.body.appendChild(heart);
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="❤"
+heart.style.left=Math.random()*100+"vw"
+heart.style.animationDuration=(6+Math.random()*8)+"s"
+heart.style.fontSize=(16+Math.random()*10)+"px"
+document.body.appendChild(heart)
 }
+
 </script>
 
 <div class="container">
@@ -262,6 +315,23 @@ if(index<0) index=0
 showSlide(index)
 }
 
+/* swipe support */
+
+let startX=0
+
+document.querySelector(".carousel").addEventListener("touchstart",(e)=>{
+startX=e.touches[0].clientX
+})
+
+document.querySelector(".carousel").addEventListener("touchend",(e)=>{
+let endX=e.changedTouches[0].clientX
+
+if(startX-endX>50) next()
+if(endX-startX>50) prev()
+})
+
+/* typing animation */
+
 const text=`I know saying sorry cannot instantly fix everything.
 
 But please know that this apology comes from the deepest place in my heart.
@@ -269,10 +339,11 @@ But please know that this apology comes from the deepest place in my heart.
 You are someone incredibly special to me.
 Your smile, your laughter, and even your little expressions make my world brighter.
 
-Hurting you or making you feel that you being ignored,
-or sidelined was never my intention and never will be.
+Hurting you or ignoring you was never what i wanted.
+And realizing that I did… truly hurts me.
 
-I want to share and live every moment with you.
+I want to live and experience every moment with you, 
+because you are my present as well as my future.
 
 I promise to listen better,
 understand you more,
